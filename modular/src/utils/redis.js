@@ -1,0 +1,43 @@
+import IORedis from "ioredis"
+import log from "fancy-log"
+
+export default class {
+  constructor({ host, port, timeToRetry, retries }) {
+    this.client = this.connect({ host, port, timeToRetry, retries })
+  }
+
+  connect({ host, port, timeToRetry, retries }) {
+    let client = new IORedis({
+      host: host,
+      port: port,
+      retryStrategy(times) {
+        var delay = Math.min(times * timeToRetry, 2000)
+        return delay
+      },
+      maxRetriesPerRequest: retries,
+    })
+
+    client.on(`connect`, () => {
+      log.info(`Connected to redis`)
+    })
+
+    client.on(`error`, err => {
+      log.error(`Redis error: ${err}`)
+    })
+
+    return client
+  }
+
+  async clear() {
+    await this.client.flushall()
+  }
+
+  async get(key) {
+    return await this.client.get(key)
+  }
+
+  async set(key, value, expire) {
+    await this.client.set(key, value)
+    if (expire) await this.client.expire(key, expire)
+  }
+}

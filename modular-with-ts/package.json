@@ -1,0 +1,9 @@
+{
+  "name": "modular-with-ts",
+  "version": "1.0.0",
+  "description": "Template modular the project api using Koa + TypeScript",
+  "main": "index.js",
+  "repository": "https://github.com/ldiego73/api-template",
+  "author": "Luis Diego",
+  "license": "MIT"
+}
