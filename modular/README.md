@@ -78,55 +78,55 @@ yarn global add pm2
 
 Commands are specific to the directory, so execute all commands in the root directory.
 
-### `yarn clean`
+#### `yarn clean`
 
 Delete the next folders generate: .cache, dist, reports, tmp.
 
-### `lint:code`
+#### `lint:code`
 
 Validate eslint rules and preview console results.
 
-### `lint:report`
+#### `lint:report`
 
 Validate eslint rules and preview results in html.
 
-### `format`
+#### `format`
 
 Allows format all files in the src folder.
 
-### `develop`
+#### `develop`
 
 Execute the project in development mode `NODE_ENV=development`, is posibble to work with hot reloading.
 
-### `test`
+#### `test`
 
 Execute all the tests using `NODE_ENV=test`.
 
-### `test:unit`
+#### `test:unit`
 
 Execute all the unit tests using `NODE_ENV=test`.
 
-### `test:integration`
+#### `test:integration`
 
 Execute all the integration using `NODE_ENV=test`.
 
-### `coverage`
+#### `coverage`
 
 Execute all the tests and preview results the coverage in html.
 
-### `coverage:unit`
+#### `coverage:unit`
 
 Execute all the unit tests and preview results the coverage in html.
 
-### `coverage:integration`
+#### `coverage:integration`
 
 Execute all the integration tests and preview results the coverage in html.
 
-### `build`
+#### `build`
 
 Generates the dist folder with the files minified and ready to be uploaded to production.
 
-### `serve`
+#### `serve`
 
 Execute the project in production mode `NODE_ENV=production`.
 
@@ -136,7 +136,7 @@ The configuration of the project can be found in the `env.yaml`
 
 ## Docker
 
-### `build`
+#### `build`
 
 Command:
 
@@ -144,7 +144,7 @@ Command:
 docker build -t api:latest .
 ```
 
-### `run`
+#### `run`
 
 Command:
 
@@ -152,7 +152,7 @@ Command:
 docker run -d -p 80:80 -it --name api-container api:latest
 ```
 
-### `logs`
+#### `logs`
 
 Command:
 
@@ -160,7 +160,7 @@ Command:
 docker logs api-container
 ```
 
-### `exec`
+#### `exec`
 
 Command:
 
@@ -170,26 +170,26 @@ docker exec -it api-container bash
 
 ## Heroku
 
-### `login`
+#### `login`
 
 ```
 heroku login
 heroku container:login
 ```
 
-### `push`
+#### `push`
 
 ```
 heroku container:push web -a=api
 ```
 
-### `deploy`
+#### `deploy`
 
 ```
 heroku container:release web -a=api
 ```
 
-### `logs`
+##### `logs`
 
 ```
 heroku logs --tail -a=api
