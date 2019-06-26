@@ -26,7 +26,6 @@ module.exports = {
   coverageDirectory: `reports/coverage`,
   testPathIgnorePatterns: [`/node_modules/`],
   testMatch: [`<rootDir>/test/**/?(*.)+(spec|test).ts`],
-  transform: {
-    "^.+\\.ts?$": "ts-jest",
-  },
+  preset: "ts-jest",
+  moduleFileExtensions: ["ts", "js", "json", "node"],
 }

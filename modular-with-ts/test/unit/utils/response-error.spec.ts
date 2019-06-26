@@ -1,4 +1,5 @@
 import { BaseContext } from "koa"
+import createError from "http-errors"
 import ResponseError from "../../../src/utils/response-error"
 
 describe(`utils/response`, () => {
@@ -7,7 +8,7 @@ describe(`utils/response`, () => {
     url: `/api/not-found`,
   }
 
-  const err = new Error(`Invalid argument`)
+  const err = createError(`Invalid argument`)
 
   it(`should define "Response" class`, () => {
     expect(ResponseError).toBeDefined()

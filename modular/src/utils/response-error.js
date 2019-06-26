@@ -1,4 +1,4 @@
-const toResponse = (status, params = {}) => {
+const toResponse = (status, params) => {
   const { title, detail, instance } = params
 
   return {

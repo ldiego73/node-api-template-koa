@@ -1,4 +1,5 @@
 import supertest from "supertest"
+import { randomInt } from "../../utils"
 import server from "../../../src/server"
 
 const app = server.listen()
@@ -14,7 +15,7 @@ describe(`GET /pokemon`, () => {
   it(
     `Should return one pokemon by id`,
     async () => {
-      const id = parseInt(Math.random(150) * 100)
+      const id = randomInt(1, 150)
       const res = await request
         .post(`/graphql`)
         .send({

@@ -1,7 +1,7 @@
 import { BaseContext } from "koa"
 import joi, { object } from "@hapi/joi"
 
-const validateObject = (object: object = {}, label: string, schema: object, options?: any) => {
+const validateObject = (object: object, label: string, schema: object, options?: any) => {
   if (!schema) return
 
   const { error } = joi.validate(object, schema, options)

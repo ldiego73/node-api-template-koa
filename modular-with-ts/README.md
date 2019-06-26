@@ -22,8 +22,8 @@ This is un modular template using the web framework Koa
 List of dependencies the server http:
 
 ```
-yarn add koa koa-router koa-bodyparser koa-compress koa-helmet koa-morgan helmet-csp @hapi/joi ioredis axios cross-env yenv
-yarn add -D @types/koa @types/koa-bodyparser @types/koa-helmet @types/koa-router @types/koa-morgan @types/koa-compress @types/hapi__joi @types/ioredis
+yarn add koa koa-router koa-bodyparser koa-compress koa-helmet koa-morgan helmet-csp @hapi/joi ioredis axios cross-env yenv http-errors
+yarn add -D @types/koa @types/koa-bodyparser @types/koa-helmet @types/koa-router @types/koa-morgan @types/koa-compress @types/hapi__joi @types/ioredis @types/http-errors
 ```
 
 List of dependencies for server graphql:

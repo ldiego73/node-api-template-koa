@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import IORedis from "ioredis"
 import log from "fancy-log"
 

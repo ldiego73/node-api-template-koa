@@ -1,4 +1,5 @@
 import supertest from "supertest"
+import { randomInt } from "../../utils"
 import server from "../../../src/server"
 
 const app = server.listen()
@@ -14,7 +15,7 @@ describe(`GET /pokemon`, () => {
   it(
     `Should return one pokemon`,
     async () => {
-      const code = parseInt((Math.random(0) * 100).toString())
+      const code = randomInt(1, 150)
       const url = `/pokemon/${code}`
       const res = await request
         .get(url)

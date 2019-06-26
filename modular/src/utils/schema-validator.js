@@ -1,6 +1,6 @@
 import joi from "@hapi/joi"
 
-const validateObject = (object = {}, label, schema, options) => {
+const validateObject = (object, label, schema, options) => {
   if (!schema) return
 
   const { error } = joi.validate(object, schema, options)

@@ -1,4 +1,5 @@
 import { BaseContext } from "koa"
+import { HttpError } from "http-errors"
 
 interface Params {
   title: string
@@ -38,8 +39,8 @@ export default class {
     return ctx.body
   }
 
-  static internalServerError(ctx: BaseContext, err: Error) {
-    ctx.status = 500
+  static internalServerError(ctx: BaseContext, err: HttpError & Error) {
+    ctx.status = err.statusCode || err.status || 500
     ctx.body = toResponse(ctx.status, {
       title: err.message,
       detail: err.stack,
