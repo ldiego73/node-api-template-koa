@@ -102,6 +102,7 @@ This project is structured by modules or features
 ├── .prettierrc                           # Global configuration that specified the format rules.
 ├── Dockerfile                            # Global configuration to create docker image.
 ├── env.yaml                              # Global configuration the different environments.
+├── gulpfile.js                           # Define tasks for the project. Example: compress, minify
 ├── LICENSE                               # Specified the MIT License.
 ├── nodemon.json                          # Global configuration to allow hot reloading. 
 ├── package.json                          # Global configuration the different dependencies of the Project.

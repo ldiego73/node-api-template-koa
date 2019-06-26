@@ -2,8 +2,10 @@ extends:
   - google
   - eslint:recommended
   - prettier
-parser: babel-eslint
+  - plugin:@typescript-eslint/recommended
+parser: "@typescript-eslint/parser"
 parserOptions:
+  ecmaVersion: 2018,
   sourceType: module
   ecmaFeatures:
     jsx: true
@@ -16,7 +18,11 @@ env:
 plugins:
   - prettier
   - filenames
+  - "@typescript-eslint"
 rules:
+  "@typescript-eslint/no-unused-vars": 2
+  "@typescript-eslint/indent": 0
+  "@typescript-eslint/explicit-function-return-type": 0
   prettier/prettier: 2
   complexity: [0, 4]
   eqeqeq: 2

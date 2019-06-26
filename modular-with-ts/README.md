@@ -13,7 +13,7 @@ This is un modular template using the web framework Koa
 
 ## Features
 
-- Works with ES6/ES7 using Babel.
+- Works with ES6/ES7 using TypeScript.
 - Supports the latest node features.
 - Free and open source!
 
@@ -23,6 +23,7 @@ List of dependencies the server http:
 
 ```
 yarn add koa koa-router koa-bodyparser koa-compress koa-helmet koa-morgan helmet-csp @hapi/joi ioredis axios cross-env yenv
+yarn add -D @types/koa @types/koa-bodyparser @types/koa-helmet @types/koa-router @types/koa-morgan @types/koa-compress @types/hapi__joi @types/ioredis
 ```
 
 List of dependencies for server graphql:
@@ -31,29 +32,31 @@ List of dependencies for server graphql:
 yarn add @graphql-modules/core apollo-server-koa graphql graphql-tools
 ```
 
-List of dependencies the compiler the files ES6/ES7 to ES5
+List of dependencies the compiler Typescript
 
 ```
-yarn add -D @babel/cli @babel/core @babel/node @babel/polyfill @babel/preset-env
-yarn add -D @babel/plugin-proposal-export-default-from @babel/plugin-proposal-export-namespace-from babel-preset-minify
+yarn add -D typescript ts-node
 ```
 
 List of dependencies for eslint:
 
 ```
 yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-filenames babel-eslint eslint-config-google
+yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 List of dependencies for utils:
 
 ```
 yarn add -D rimraf fancy-log
+yarn add -D @types/fancy-log
 ```
 
 List of dependencies for test:
 
 ```
 yarn add -D jest jest-extended jest-html-reporters jest-html-reporter supertest
+yarn add -D @types/jest ts-jest @types/supertest
 ```
 
 List of dependencies for documentation:
@@ -65,7 +68,7 @@ yarn add swagger2-koa
 List of dependencies for development:
 
 ```
-yarn add -D nodemon gulp gulp-copy gulp-uglify-es
+yarn add -D nodemon
 ```
 
 List of dependencies for production:

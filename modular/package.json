@@ -27,7 +27,7 @@
   "bin": {
     "api": "./dist/bin/api"
   },
-  "repository": "https://github.com/ldiego73/api-template",
+  "repository": "https://github.com/ldiego73/node-api-template",
   "author": "Luis Diego",
   "license": "MIT",
   "dependencies": {
