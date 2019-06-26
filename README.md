@@ -109,3 +109,10 @@ This project is structured by modules or features
 ├── pm2.yml                               # Global configuration to deploy app in production.
 └── README.md                             # Specified the description the Project.
 ```
+
+## Enabled Port in Ubuntu
+
+```
+sudo apt-get install libcap2-bin
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
+```

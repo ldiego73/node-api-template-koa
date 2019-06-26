@@ -30,6 +30,7 @@ List of dependencies for server graphql:
 
 ```
 yarn add @graphql-modules/core apollo-server-koa graphql graphql-tools
+yarn add -D @types/graphql @types/glob
 ```
 
 List of dependencies the compiler Typescript

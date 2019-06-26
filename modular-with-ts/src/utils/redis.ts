@@ -3,9 +3,9 @@ import IORedis, { Redis } from "ioredis"
 import log from "fancy-log"
 
 interface Params {
-  host: string,
-  port: number,
-  timeToRetry: number,
+  host: string
+  port: number
+  timeToRetry: number
   retries: number
 }
 
