@@ -1,8 +1,8 @@
 import Router from "koa-router"
 
-import CountryController from "./country.controller"
+import CountryController from "./controller"
 import schemaValidator from "../../utils/schema-validator"
-import schema from "./country.schema"
+import schema from "./schema"
 
 const controller = new CountryController()
 const router = new Router({ prefix: `/country` })

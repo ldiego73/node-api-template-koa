@@ -1,17 +1,17 @@
-import CountryRepository from "./country.repository"
-import CountryModel from "./country.model"
+import CountryRepository from "./repository"
+import { Country } from "./model"
 
 const repository = new CountryRepository()
 
 export default class {
-  async findAll(orderBy) {
+  async findAll(orderBy?: string): Promise<Country[]> {
     const data = await repository.findAll()
 
     if (!orderBy) {
       return data
     }
 
-    let sortData = []
+    let sortData: Country[]
 
     if (orderBy === `iso_DESC`) {
       sortData = data.sort((a, b) => {
@@ -61,22 +61,16 @@ export default class {
     return sortData
   }
 
-  async findByIso(iso) {
+  async findByIso(iso: string): Promise<Country> {
     const data = await repository.findByIso(iso)
     const keys = Object.keys(data || {}).length
 
     if (keys < 1) return null
 
-    return new CountryModel(
-      data.name,
-      data.iso,
-      data.brand_id,
-      data.currency,
-      data.status
-    )
+    return data
   }
 
-  async insert() {
-    return await repository.insert()
+  async insert(entity?: object): Promise<boolean> {
+    return await repository.insert(entity)
   }
 }

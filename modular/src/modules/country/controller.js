@@ -1,4 +1,4 @@
-import CountryService from "./country.service"
+import CountryService from "./service"
 
 let service = new CountryService()
 

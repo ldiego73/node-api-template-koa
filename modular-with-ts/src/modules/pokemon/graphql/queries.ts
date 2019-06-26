@@ -1,9 +1,9 @@
-import PokemonService from "../pokemon.service"
+import PokemonService from "../service"
 
 const pokemonService = new PokemonService()
 
 export default {
-  async pokemon(_, { id }) {
+  async pokemon(_: any, { id }: any) {
     return await pokemonService.search(id)
   },
 }

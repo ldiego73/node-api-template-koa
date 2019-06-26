@@ -1,9 +1,9 @@
-import CountryService from "../country.service"
+import CountryService from "../service"
 
 const service = new CountryService()
 
 export default {
-  async addCountry(_: any, args: any) {
+  async addCountry(_, args) {
     try {
       return await service.insert(args)
     } catch (e) {

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Pokemon, PokemonImages } from "./pokemon.model"
+import { Pokemon, PokemonImages } from "./model"
 
 export default class {
   async search(id: number): Promise<Pokemon>{

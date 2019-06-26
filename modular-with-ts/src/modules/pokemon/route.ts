@@ -1,8 +1,8 @@
 import Router from "koa-router"
 
-import PokemonController from "./pokemon.controller"
+import PokemonController from "./controller"
 import schemaValidator from "../../utils/schema-validator"
-import schema from "./pokemon.schema"
+import schema from "./schema"
 
 const controller = new PokemonController()
 const router = new Router({ prefix: `/pokemon` })

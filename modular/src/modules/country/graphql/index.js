@@ -3,9 +3,10 @@ import path from "path"
 import { GraphQLModule } from "@graphql-modules/core"
 import { gql } from "apollo-server-koa"
 
-import queries from "./pokemon.queries"
+import queries from "./queries"
+import mutations from "./mutations"
 
-const graphql = fs.readFileSync(path.join(__dirname, `pokemon.gql`), `utf8`)
+const graphql = fs.readFileSync(path.join(__dirname, `country.gql`), `utf8`)
 
 export default new GraphQLModule({
   typeDefs: gql`
@@ -13,5 +14,6 @@ export default new GraphQLModule({
   `,
   resolvers: {
     Query: { ...queries },
+    Mutation: { ...mutations },
   },
 })
