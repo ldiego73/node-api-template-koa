@@ -1,7 +1,7 @@
-import CountryRepository from "./repository"
-import CountryModel from "./model"
+import Repository from "./repository"
+import Model from "./model"
 
-const repository = new CountryRepository()
+const repository = new Repository()
 
 export default class {
   async findAll(orderBy) {
@@ -67,7 +67,7 @@ export default class {
 
     if (keys < 1) return null
 
-    return new CountryModel(
+    return new Model(
       data.name,
       data.iso,
       data.brand_id,

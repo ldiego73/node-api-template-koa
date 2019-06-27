@@ -1,7 +1,7 @@
 import { BaseContext } from "koa"
-import CountryService from "./service"
+import Service from "./service"
 
-let service = new CountryService()
+let service = new Service()
 
 export default class {
   async list(ctx: BaseContext): Promise<any>  {

@@ -1,6 +1,6 @@
-import PokemonService from "./service"
+import Service from "./service"
 
-const service = new PokemonService()
+const service = new Service()
 
 export default class {
   async findById(ctx) {

@@ -1,7 +1,7 @@
-import CountryRepository from "./repository"
+import Repository from "./repository"
 import { Country } from "./model"
 
-const repository = new CountryRepository()
+const repository = new Repository()
 
 export default class {
   async findAll(orderBy?: string): Promise<Country[]> {

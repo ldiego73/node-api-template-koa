@@ -1,5 +1,5 @@
 # Node API template
-This is un list modular of template using the web framework Koa
+This is un list of template using the web framework Koa
 
 ## Architecture
 Architecture diagram

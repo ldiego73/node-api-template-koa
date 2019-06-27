@@ -1,9 +1,9 @@
-import PokemonService from "../service"
+import Service from "../service"
 
-const pokemonService = new PokemonService()
+const service = new Service()
 
 export default {
   async pokemon(_: any, { id }: any) {
-    return await pokemonService.search(id)
+    return await service.search(id)
   },
 }

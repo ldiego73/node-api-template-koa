@@ -1,6 +1,6 @@
-import CountryService from "../service"
+import Service from "../service"
 
-const service = new CountryService()
+const service = new Service()
 
 export default {
   async countries(_: any, { orderBy }: any) {

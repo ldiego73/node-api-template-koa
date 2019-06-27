@@ -1,14 +1,14 @@
 import Router from "koa-router"
 
-import CountryController from "./controller"
+import Controller from "./controller"
 import schemaValidator from "../../utils/schema-validator"
 import schema from "./schema"
 
-const controller = new CountryController()
+const controller = new Controller()
 const router = new Router({ prefix: `/country` })
-const isoValidator = schemaValidator({ params: schema })
+const validator = schemaValidator({ params: schema })
 
 router.get(`country/list`, `/`, controller.list)
-router.get(`country/iso`, `/:iso`, isoValidator, controller.findByIso)
+router.get(`country/iso`, `/:iso`, validator, controller.findByIso)
 
 export default router

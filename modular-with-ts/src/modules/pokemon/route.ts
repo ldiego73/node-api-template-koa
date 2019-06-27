@@ -1,13 +1,13 @@
 import Router from "koa-router"
 
-import PokemonController from "./controller"
+import Controller from "./controller"
 import schemaValidator from "../../utils/schema-validator"
 import schema from "./schema"
 
-const controller = new PokemonController()
+const controller = new Controller()
 const router = new Router({ prefix: `/pokemon` })
-const idValidator = schemaValidator({ params: schema })
+const validator = schemaValidator({ params: schema })
 
-router.get(`pokemon/find`, `/:id`, idValidator, controller.findById)
+router.get(`pokemon/find`, `/:id`, validator, controller.findById)
 
 export default router
