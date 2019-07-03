@@ -1,0 +1,23 @@
+enum OrderByCountry {
+  iso_ASC
+  iso_DESC
+  name_ASC
+  name_DESC
+}
+
+type Country {
+  name: String
+  iso: String
+  brand_id: Int
+  currency: Float
+  status: Boolean
+}
+
+type Query {
+  countries(orderBy: OrderByCountry): [Country]
+  country(iso: String!): Country
+}
+
+type Mutation {
+  addCountry(id: Int!, iso: String!, name: String!): Boolean
+}

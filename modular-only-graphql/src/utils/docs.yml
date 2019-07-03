@@ -1,0 +1,133 @@
+swagger: "2.0"
+
+info:
+  version: "1.0.0"
+  title: API Docs
+  description: API Docs
+  contact:
+    email: "lfdiego7@gmail.com"
+
+paths:
+  /country:
+    get:
+      tags:
+        - Countries
+      summary: "List all countries"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            title: Countries
+            type: array
+            items:
+              $ref: "#/definitions/Country"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/Error"
+  /country/{iso}:
+    get:
+      tags:
+        - Countries
+      summary: "get a specified country"
+      produces:
+        - application/json
+      parameters:
+        - name: iso
+          in: path
+          description: path parameter takes the iso
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Country"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/Error"
+  /pokemon/{id}:
+    get:
+      tags:
+        - Pokemon
+      summary: "find a pokemon by id"
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: path parameter takes the id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Pokemon"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/Error"
+
+definitions:
+  Country:
+    type: object
+    properties:
+      name:
+        type: string
+      iso:
+        type: string
+      brand_id:
+        type: integer
+        format: int32
+      currency:
+        type: string
+      status:
+        type: boolean
+  Pokemon:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      base_experience:
+        type: integer
+        format: int32
+      height:
+        type: integer
+        format: int32
+      weight:
+        type: integer
+        format: int32
+      images:
+        type: object
+        properties:
+          normal:
+            type: string
+          shiny:
+            type: string
+  Error:
+    type: object
+    properties:
+      title:
+        type: string
+      type:
+        type: string
+      detail:
+        type: string
+      instance:
+        type: string
+      invalidparams:
+        type: string

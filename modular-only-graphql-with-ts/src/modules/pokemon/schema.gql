@@ -1,0 +1,29 @@
+input PokemonInput {
+  id: [Int]
+}
+
+type Pokemon {
+  id: Int
+  name: String
+  height: Int
+  weight: Int
+  order: Int
+  base_experience: Int
+  images: PokemonImages
+  types: [PokemonType]
+}
+
+type PokemonImages {
+  normal: String
+  shiny: String
+}
+
+type PokemonType {
+  slot: Int
+  name: String
+}
+
+type Query {
+  pokemones(ids: PokemonInput!): [Pokemon]
+  pokemon(id: Int!): Pokemon
+}

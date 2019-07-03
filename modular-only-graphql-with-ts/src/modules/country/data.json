@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Perú",
+    "iso": "PE",
+    "brand_id": 2,
+    "currency": "S/.",
+    "status": true
+  },
+  {
+    "name": "Colombia",
+    "iso": "CO",
+    "brand_id": 2,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Chile",
+    "iso": "CL",
+    "brand_id": 2,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Mexico",
+    "iso": "MX",
+    "brand_id": 1,
+    "currency": "$.",
+    "status": true
+  },
+  {
+    "name": "Bolivia",
+    "iso": "BO",
+    "brand_id": 2,
+    "currency": "Bs",
+    "status": true
+  },
+  {
+    "name": "Puerto Rico",
+    "iso": "PR",
+    "brand_id": 1,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Brasil",
+    "iso": "BR",
+    "brand_id": 2,
+    "currency": "R$",
+    "status": false
+  },
+  {
+    "name": "Guatemala",
+    "iso": "GT",
+    "brand_id": 2,
+    "currency": "Q",
+    "status": true
+  },
+  {
+    "name": "Panama",
+    "iso": "PA",
+    "brand_id": 1,
+    "currency": "B/.",
+    "status": true
+  },
+  {
+    "name": "El Salvador",
+    "iso": "SV",
+    "brand_id": 2,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Costa Rica",
+    "iso": "CR",
+    "brand_id": 1,
+    "currency": "₡",
+    "status": true
+  },
+  {
+    "name": "Ecuador",
+    "iso": "EC",
+    "brand_id": 2,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Republica Dominicana",
+    "iso": "DO",
+    "brand_id": 2,
+    "currency": "$",
+    "status": true
+  },
+  {
+    "name": "Estados Unidos",
+    "iso": "US",
+    "brand_id": 2,
+    "currency": "$",
+    "status": false
+  }
+]
