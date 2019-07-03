@@ -55,6 +55,62 @@ describe('GET /pokemon', () => {
   )
 
   it(
+    'Should return list pokemones by ids',
+    async () => {
+      const id1 = randomInt(1, 150)
+      const id2 = randomInt(1, 150)
+      const id3 = randomInt(1, 150)
+
+      const res = await request
+        .post('/graphql')
+        .send({
+          query: `
+            query pokemones($ids: PokemonInput!) {
+              pokemones(ids: $ids) {
+                id
+                name
+                base_experience
+                images {
+                  normal
+                  shiny
+                }
+              }
+            }
+          `,
+          variables: {
+            ids: {
+              id: [id1, id2, id3],
+            },
+          },
+        })
+        .expect('Content-Type', /json/)
+        .expect(200)
+
+      const data = res.body
+
+      expect(data).toEqual(
+        expect.objectContaining({
+          data: expect.any(Object),
+        })
+      )
+
+      const { pokemones } = data.data
+      expect(Array.isArray(pokemones)).toBe(true)
+
+      const pokemon = pokemones[0]
+
+      expect(Object.keys(pokemon)).toEqual(
+        expect.arrayContaining(['id', 'name', 'base_experience', 'images'])
+      )
+      expect(pokemon.id).toBe(id1)
+      expect(Object.keys(pokemon.images)).toEqual(
+        expect.arrayContaining(['normal', 'shiny'])
+      )
+    },
+    TIMEOUT
+  )
+
+  it(
     'Should return error when the pokemon not found',
     async () => {
       const res = await request
