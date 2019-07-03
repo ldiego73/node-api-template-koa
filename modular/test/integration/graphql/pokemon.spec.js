@@ -1,5 +1,5 @@
-import supertest from "supertest"
-import server from "../../../src/server"
+import supertest from 'supertest'
+import server from '../../../src/server'
 
 const app = server.listen()
 const TIMEOUT = 1000 * 60 * 30
@@ -8,15 +8,15 @@ afterAll(() => {
   app.close()
 })
 
-describe(`GET /pokemon`, () => {
+describe('GET /pokemon', () => {
   const request = supertest(app)
 
   it(
-    `Should return one pokemon by id`,
+    'Should return one pokemon by id',
     async () => {
       const id = parseInt(Math.random(150) * 100)
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             pokemon(id: ${id}) {
@@ -30,7 +30,7 @@ describe(`GET /pokemon`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -43,21 +43,21 @@ describe(`GET /pokemon`, () => {
 
       const { pokemon } = data.data
       expect(Object.keys(pokemon)).toEqual(
-        expect.arrayContaining([`id`, `name`, `base_experience`, `images`])
+        expect.arrayContaining(['id', 'name', 'base_experience', 'images'])
       )
       expect(pokemon.id).toBe(id)
       expect(Object.keys(pokemon.images)).toEqual(
-        expect.arrayContaining([`normal`, `shiny`])
+        expect.arrayContaining(['normal', 'shiny'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return error when the pokemon not found`,
+    'Should return error when the pokemon not found',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             pokemon(id: 10000) {
@@ -71,7 +71,7 @@ describe(`GET /pokemon`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -89,20 +89,20 @@ describe(`GET /pokemon`, () => {
       const error = errors[0]
 
       expect(Object.keys(error)).toEqual(
-        expect.arrayContaining([`message`, `locations`, `extensions`])
+        expect.arrayContaining(['message', 'locations', 'extensions'])
       )
-      expect(error.message).toEqual(`Request failed with status code 404`)
-      expect(error.extensions.code).toBe(`INTERNAL_SERVER_ERROR`)
+      expect(error.message).toEqual('Request failed with status code 404')
+      expect(error.extensions.code).toBe('INTERNAL_SERVER_ERROR')
     },
     TIMEOUT
   )
 
   it(
-    `Should return error when the pokemon id has a parament invalid`,
+    'Should return error when the pokemon id has a parament invalid',
     async () => {
-      const id = `ABC`
+      const id = 'ABC'
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             pokemon(id: "${id}") {
@@ -116,7 +116,7 @@ describe(`GET /pokemon`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(400)
 
       const data = res.body
@@ -134,10 +134,10 @@ describe(`GET /pokemon`, () => {
       const error = errors[0]
 
       expect(Object.keys(error)).toEqual(
-        expect.arrayContaining([`message`, `locations`, `extensions`])
+        expect.arrayContaining(['message', 'locations', 'extensions'])
       )
       expect(error.message).toEqual(`Expected type Int!, found "${id}".`)
-      expect(error.extensions.code).toBe(`GRAPHQL_VALIDATION_FAILED`)
+      expect(error.extensions.code).toBe('GRAPHQL_VALIDATION_FAILED')
     },
     TIMEOUT
   )

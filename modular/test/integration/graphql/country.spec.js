@@ -1,5 +1,5 @@
-import supertest from "supertest"
-import server from "../../../src/server"
+import supertest from 'supertest'
+import server from '../../../src/server'
 
 const app = server.listen()
 const TIMEOUT = 1000 * 60 * 30
@@ -8,14 +8,14 @@ afterAll(() => {
   app.close()
 })
 
-describe(`POST /graphql => country`, () => {
+describe('POST /graphql => country', () => {
   const request = supertest(app)
 
   it(
-    `Should return a list of countries`,
+    'Should return a list of countries',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             countries {
@@ -24,7 +24,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -39,17 +39,17 @@ describe(`POST /graphql => country`, () => {
 
       expect(Array.isArray(countries)).toBe(true)
       expect(Object.keys(countries[0])).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return a list of countries order by name ASC`,
+    'Should return a list of countries order by name ASC',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             countries(orderBy: name_ASC) {
@@ -58,7 +58,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -73,17 +73,17 @@ describe(`POST /graphql => country`, () => {
 
       expect(Array.isArray(countries)).toBe(true)
       expect(Object.keys(countries[0])).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return a list of countries order by name DESC`,
+    'Should return a list of countries order by name DESC',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             countries(orderBy: name_DESC) {
@@ -92,7 +92,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -107,17 +107,17 @@ describe(`POST /graphql => country`, () => {
 
       expect(Array.isArray(countries)).toBe(true)
       expect(Object.keys(countries[0])).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return a list of countries order by iso ASC`,
+    'Should return a list of countries order by iso ASC',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             countries(orderBy: iso_ASC) {
@@ -126,7 +126,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -141,17 +141,17 @@ describe(`POST /graphql => country`, () => {
 
       expect(Array.isArray(countries)).toBe(true)
       expect(Object.keys(countries[0])).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return a list of countries order by iso DESC`,
+    'Should return a list of countries order by iso DESC',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             countries(orderBy: iso_DESC) {
@@ -160,7 +160,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -175,18 +175,18 @@ describe(`POST /graphql => country`, () => {
 
       expect(Array.isArray(countries)).toBe(true)
       expect(Object.keys(countries[0])).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
     },
     TIMEOUT
   )
 
   it(
-    `Should return one country`,
+    'Should return one country',
     async () => {
-      const iso = `PE`
+      const iso = 'PE'
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `{
             country(iso: "${iso}") {
@@ -195,7 +195,7 @@ describe(`POST /graphql => country`, () => {
             }
           }`,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -208,7 +208,7 @@ describe(`POST /graphql => country`, () => {
 
       const { country } = data.data
       expect(Object.keys(country)).toEqual(
-        expect.arrayContaining([`name`, `iso`])
+        expect.arrayContaining(['name', 'iso'])
       )
 
       expect(country.iso).toBe(iso)
@@ -217,10 +217,10 @@ describe(`POST /graphql => country`, () => {
   )
 
   it(
-    `Should add one country`,
+    'Should add one country',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `
             mutation {
@@ -228,7 +228,7 @@ describe(`POST /graphql => country`, () => {
             }
           `,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(200)
 
       const data = res.body
@@ -246,10 +246,10 @@ describe(`POST /graphql => country`, () => {
   )
 
   it(
-    `Should error add one country by parameter required`,
+    'Should error add one country by parameter required',
     async () => {
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `
             mutation {
@@ -257,7 +257,7 @@ describe(`POST /graphql => country`, () => {
             }
           `,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(400)
 
       const data = res.body
@@ -275,22 +275,22 @@ describe(`POST /graphql => country`, () => {
       const error = errors[0]
 
       expect(Object.keys(error)).toEqual(
-        expect.arrayContaining([`message`, `locations`, `extensions`])
+        expect.arrayContaining(['message', 'locations', 'extensions'])
       )
       expect(error.message).toEqual(
-        `Field "addCountry" argument "id" of type "Int!" is required, but it was not provided.`
+        'Field "addCountry" argument "id" of type "Int!" is required, but it was not provided.'
       )
-      expect(error.extensions.code).toBe(`GRAPHQL_VALIDATION_FAILED`)
+      expect(error.extensions.code).toBe('GRAPHQL_VALIDATION_FAILED')
     },
     TIMEOUT
   )
 
   it(
-    `Should error add one country by parameter invalid`,
+    'Should error add one country by parameter invalid',
     async () => {
-      const id = `ABC`
+      const id = 'ABC'
       const res = await request
-        .post(`/graphql`)
+        .post('/graphql')
         .send({
           query: `
             mutation {
@@ -298,7 +298,7 @@ describe(`POST /graphql => country`, () => {
             }
           `,
         })
-        .expect(`Content-Type`, /json/)
+        .expect('Content-Type', /json/)
         .expect(400)
 
       const data = res.body
@@ -316,10 +316,10 @@ describe(`POST /graphql => country`, () => {
       const error = errors[0]
 
       expect(Object.keys(error)).toEqual(
-        expect.arrayContaining([`message`, `locations`, `extensions`])
+        expect.arrayContaining(['message', 'locations', 'extensions'])
       )
       expect(error.message).toEqual(`Expected type Int!, found "${id}".`)
-      expect(error.extensions.code).toBe(`GRAPHQL_VALIDATION_FAILED`)
+      expect(error.extensions.code).toBe('GRAPHQL_VALIDATION_FAILED')
     },
     TIMEOUT
   )
