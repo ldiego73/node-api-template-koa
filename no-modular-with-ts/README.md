@@ -98,6 +98,10 @@ Validate eslint rules and preview results in html.
 
 Allows format all files in the src folder.
 
+#### `format:fix`
+
+Allows format and fix all files in the src folder.
+
 #### `develop`
 
 Execute the project in development mode `NODE_ENV=development`, is posibble to work with hot reloading.
