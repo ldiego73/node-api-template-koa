@@ -1,0 +1,20 @@
+# Directories
+.cache/
+node_modules/
+dist/
+reports/
+tmp/
+
+# Logs
+*.log
+*lock
+
+# Generated files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+*.lock
+
+# Properties
+.env

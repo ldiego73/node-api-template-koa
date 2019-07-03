@@ -1,0 +1,25 @@
+# Directories
+.vscode/
+.cache/
+node_modules/
+dist/
+reports/
+tmp/
+
+# Logs
+*.log
+
+# Generated files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+*.lock
+
+# Properties
+.env
+
+# Others
+.editorconfig
+.gitignore
+README.md

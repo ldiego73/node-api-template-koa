@@ -1,0 +1,13 @@
+{
+  "restartable": "rs",
+  "ignore": [".git", "node_modules", "dist", "reports", "test"],
+  "verbose": true,
+  "execMap": {
+    "js": "babel-node"
+  },
+  "watch": ["src/"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json gql yml"
+}
