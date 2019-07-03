@@ -1,5 +1,4 @@
 import Koa from "koa"
-import Router from "koa-router"
 import helmet from "koa-helmet"
 import bodyParser from "koa-bodyparser"
 import { ApolloServer } from "apollo-server-koa"

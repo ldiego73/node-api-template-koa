@@ -10,19 +10,18 @@ interface Params {
 }
 
 export default class {
-  client: Redis
+  private client: Redis
 
   constructor({ host, port, timeToRetry, retries }: Params) {
     this.client = this.connect({ host, port, timeToRetry, retries })
   }
 
   connect({ host, port, timeToRetry, retries }: Params) {
-    let client = new IORedis({
+    const client = new IORedis({
       host: host,
       port: port,
       retryStrategy(times) {
-        var delay = Math.min(times * timeToRetry, 2000)
-        return delay
+        return Math.min(times * timeToRetry, 2000)
       },
       maxRetriesPerRequest: retries,
     })

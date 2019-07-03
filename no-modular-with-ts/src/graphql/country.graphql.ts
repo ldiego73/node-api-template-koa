@@ -6,7 +6,10 @@ import { gql } from "apollo-server-koa"
 import queries from "./queries/country.queries"
 import mutations from "./mutations/country.mutations"
 
-const graphql = fs.readFileSync(path.join(__dirname, `./gql/country.gql`), `utf8`)
+const graphql = fs.readFileSync(
+  path.join(__dirname, `./gql/country.gql`),
+  `utf8`
+)
 
 export default new GraphQLModule({
   typeDefs: gql`

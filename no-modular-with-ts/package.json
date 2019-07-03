@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "clean": "rimraf .cache dist reports tmp",
-    "lint:code": "eslint src/**/*.{js,ts} -f stylish",
-    "lint:test": "eslint test/**/*.{js,ts} -f stylish",
-    "lint:report": "eslint src/**/*.{js,ts} -f html -o reports/lint.html",
+    "lint:code": "eslint --ext ts src/ -f stylish",
+    "lint:test": "eslint --ext ts test/ -f stylish",
+    "lint:report": "eslint --ext ts src/ -f html -o reports/lint.html",
     "format": "prettier --write src/**/*.ts",
     "predevelop": "npm run clean && npm run lint:code",
     "develop": "nodemon ./src/server.ts",

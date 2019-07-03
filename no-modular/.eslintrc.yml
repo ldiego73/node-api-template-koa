@@ -45,4 +45,5 @@ rules:
     - methods
     - ignoreConstructors: true
       avoidExplicitReturnArrows: true
+  require-jsdoc: 0
   use-isnan: 2

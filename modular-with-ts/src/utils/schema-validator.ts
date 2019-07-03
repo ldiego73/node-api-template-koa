@@ -1,5 +1,5 @@
 import { BaseContext } from "koa"
-import joi, { object } from "@hapi/joi"
+import joi from "@hapi/joi"
 
 const validateObject = (
   object: object,

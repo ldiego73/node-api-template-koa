@@ -18,4 +18,15 @@ export default class {
 
     return pokemon
   }
+
+  async searchByIds(ids) {
+    const p = []
+
+    for (let i = 0; i < ids.length; i++) {
+      const id = ids[i]
+      p.push(this.search(id))
+    }
+
+    return await Promise.all(p)
+  }
 }

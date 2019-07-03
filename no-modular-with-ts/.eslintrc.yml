@@ -5,7 +5,7 @@ extends:
   - plugin:@typescript-eslint/recommended
 parser: "@typescript-eslint/parser"
 parserOptions:
-  ecmaVersion: 2018,
+  ecmaVersion: 2018
   sourceType: module
   ecmaFeatures:
     jsx: true
@@ -21,9 +21,14 @@ plugins:
   - filenames
   - "@typescript-eslint"
 rules:
-  "@typescript-eslint/no-unused-vars": 2
-  "@typescript-eslint/indent": 0
   "@typescript-eslint/explicit-function-return-type": 0
+  "@typescript-eslint/explicit-member-accessibility":
+    - 2
+    - accessibility: no-public
+  "@typescript-eslint/indent": 0
+  "@typescript-eslint/member-delimiter-style": 0
+  "@typescript-eslint/no-explicit-any": 0
+  "@typescript-eslint/no-unused-vars": 2
   prettier/prettier: 2
   complexity: [0, 4]
   eqeqeq: 2
@@ -51,4 +56,5 @@ rules:
     - methods
     - ignoreConstructors: true
       avoidExplicitReturnArrows: true
+  require-jsdoc: 0
   use-isnan: 2

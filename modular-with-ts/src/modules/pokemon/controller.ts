@@ -1,3 +1,5 @@
+/* eslint require-atomic-updates: 0 */
+
 import { BaseContext } from "koa"
 import Service from "./service"
 
