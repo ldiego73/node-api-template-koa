@@ -1,5 +1,5 @@
-import { BaseContext } from "koa"
-import ResponseError from "./response-error"
+import { BaseContext } from 'koa'
+import ResponseError from './response-error'
 
 export default async (ctx: BaseContext, next: () => Promise<any>) => {
   try {

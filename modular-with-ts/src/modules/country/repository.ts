@@ -1,5 +1,5 @@
-import data from "./data.json"
-import { Country } from "./model"
+import data from './data.json'
+import { Country } from './model'
 
 export default class {
   async findAll(): Promise<Country[]> {

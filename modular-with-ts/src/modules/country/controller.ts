@@ -1,7 +1,7 @@
 /* eslint require-atomic-updates: 0 */
 
-import { BaseContext } from "koa"
-import Service from "./service"
+import { BaseContext } from 'koa'
+import Service from './service'
 
 const service = new Service()
 

@@ -1,5 +1,5 @@
-import { BaseContext } from "koa"
-import { HttpError } from "http-errors"
+import { BaseContext } from 'koa'
+import { HttpError } from 'http-errors'
 
 interface Params {
   title: string
@@ -18,7 +18,7 @@ interface ResponseError {
 const toResponse = (status: number, params?: Params) => {
   const { title, detail, instance } = params
   const response: ResponseError = {
-    type: `about:blank`,
+    type: 'about:blank',
     title,
     status,
     detail,
@@ -32,8 +32,8 @@ export default class {
   static notFound(ctx: BaseContext) {
     ctx.status = 404
     ctx.body = toResponse(ctx.status, {
-      title: `Not Found`,
-      detail: ``,
+      title: 'Not Found',
+      detail: '',
       instance: ctx.url,
     })
     return ctx.body

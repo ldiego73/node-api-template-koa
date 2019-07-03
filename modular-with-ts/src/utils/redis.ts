@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import IORedis, { Redis } from "ioredis"
-import log from "fancy-log"
+import IORedis, { Redis } from 'ioredis'
+import log from 'fancy-log'
 
 interface Params {
   host: string
@@ -26,11 +26,11 @@ export default class {
       maxRetriesPerRequest: retries,
     })
 
-    client.on(`connect`, () => {
-      log.info(`Connected to redis`)
+    client.on('connect', () => {
+      log.info('Connected to redis')
     })
 
-    client.on(`error`, err => {
+    client.on('error', err => {
       log.error(`Redis error: ${err}`)
     })
 

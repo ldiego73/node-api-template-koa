@@ -1,5 +1,5 @@
-import Repository from "./repository"
-import { Country } from "./model"
+import Repository from './repository'
+import { Country } from './model'
 
 const repository = new Repository()
 
@@ -13,7 +13,7 @@ export default class {
 
     let sortData: Country[]
 
-    if (orderBy === `iso_DESC`) {
+    if (orderBy === 'iso_DESC') {
       sortData = data.sort((a, b) => {
         if (a.iso > b.iso) {
           return -1
@@ -23,7 +23,7 @@ export default class {
         /* istanbul ignore next */
         return 0
       })
-    } else if (orderBy === `iso_ASC`) {
+    } else if (orderBy === 'iso_ASC') {
       sortData = data.sort((a, b) => {
         if (a.iso < b.iso) {
           return -1
@@ -33,7 +33,7 @@ export default class {
         /* istanbul ignore next */
         return 0
       })
-    } else if (orderBy === `name_DESC`) {
+    } else if (orderBy === 'name_DESC') {
       sortData = data.sort((a, b) => {
         if (a.name > b.name) {
           return -1
@@ -43,7 +43,7 @@ export default class {
         /* istanbul ignore next */
         return 0
       })
-    } else if (orderBy === `name_ASC`) {
+    } else if (orderBy === 'name_ASC') {
       sortData = data.sort((a, b) => {
         if (a.name < b.name) {
           return -1
