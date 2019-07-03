@@ -1,21 +1,21 @@
-import Koa from "koa"
-import helmet from "koa-helmet"
-import bodyParser from "koa-bodyparser"
-import { ApolloServer } from "apollo-server-koa"
-import log from "fancy-log"
-import yenv from "yenv"
+import Koa from 'koa'
+import helmet from 'koa-helmet'
+import bodyParser from 'koa-bodyparser'
+import { ApolloServer } from 'apollo-server-koa'
+import log from 'fancy-log'
+import yenv from 'yenv'
 
 import {
   access as accessLogger,
   error as errorLogger,
-} from "./utils/api-logger"
-import csp from "./utils/csp"
-import compress from "./utils/compress"
-import notFavicon from "./utils/api-not-favicon"
-import apiError from "./utils/api-error"
-import docs from "./utils/api-docs"
-import routes from "./routes"
-import AppGraphqlModule from "./graphql"
+} from './utils/api-logger'
+import csp from './utils/csp'
+import compress from './utils/compress'
+import notFavicon from './utils/api-not-favicon'
+import apiError from './utils/api-error'
+import docs from './utils/api-docs'
+import routes from './routes'
+import AppGraphqlModule from './graphql'
 
 const env = yenv()
 const PORT = env.PORT
@@ -42,12 +42,12 @@ routes.map(r => {
 serverGraphql.applyMiddleware({ app: server })
 
 /* istanbul ignore if  */
-if (env.NODE_ENV !== `test`) {
+if (env.NODE_ENV !== 'test') {
   server
-    .listen(PORT, `0.0.0.0`, () =>
+    .listen(PORT, '0.0.0.0', () =>
       log.info(`Server listening on PORT: ${PORT}`)
     )
-    .on(`error`, log.error)
+    .on('error', log.error)
 }
 
 export default server

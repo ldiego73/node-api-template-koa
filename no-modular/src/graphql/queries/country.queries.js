@@ -1,4 +1,4 @@
-import CountryService from "../../services/country.service"
+import CountryService from '../../services/country.service'
 
 const service = new CountryService()
 
