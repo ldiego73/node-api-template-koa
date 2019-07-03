@@ -67,16 +67,16 @@ This project is structured by modules or features
 │   ├── modules                           # Folder that specifies the features the business.
 │   │   ├── name                          # Folder that contains one feature the business.
 │   │   │   ├── graphql                   # Folder that contains the GraphQL configuration.
-│   │   │   │   ├── name.gql              # File that contains the types of GraphQL.
-│   │   │   │   ├── name.graphql.js       # Create one GraphQL module configuration.
-│   │   │   │   ├── name.mutation.js      # Specifies the methods to make transactions.
-│   │   │   │   └── name.queries.js       # Specifies the methods to make queries.
-│   │   │   ├── name.controller.js        # Validate the request and send to data to service.
-│   │   │   ├── name.model.js             # Specified the model of business logic.
-│   │   │   ├── name.repository.js        # Contains the methods to connect and provides the information the database.
-│   │   │   ├── name.route.js             # Contains the verbs of an endpoint the REST API.
-│   │   │   ├── name.schema.js            # Specifies the validations of attributes of a model.
-│   │   │   └── name.service.js           # Inside this file your can do business rules.
+│   │   │   │   ├── schema.gql            # File that contains the types of GraphQL.
+│   │   │   │   ├── index.js              # Create one GraphQL module configuration.
+│   │   │   │   ├── mutations.js          # Specifies the methods to make transactions.
+│   │   │   │   └── queries.js            # Specifies the methods to make queries.
+│   │   │   ├── controller.js             # Validate the request and send to data to service.
+│   │   │   ├── model.js                  # Specified the model of business logic.
+│   │   │   ├── repository.js             # Contains the methods to connect and provides the information the database.
+│   │   │   ├── route.js                  # Contains the verbs of an endpoint the REST API.
+│   │   │   ├── schema.js                 # Specifies the validations of attributes of a model.
+│   │   │   └── service.js                # Inside this file your can do business rules.
 │   ├── utils                             # Folder that especies the utils of project.
 │   │   ├── api-docs.js                   # Handles the docs the api.
 │   │   ├── api-error.js                  # Handles the errors the api.
@@ -85,6 +85,7 @@ This project is structured by modules or features
 │   │   ├── compress.js                   # Handles the compression the all of requests the api.
 │   │   ├── csp.js                        # Handles the security the api.
 │   │   ├── docs.yml                      # Specifies the documentation the apis in the project.
+│   │   ├── response-error.js             # Global configuration for response error (not found, internal error server).
 │   │   ├── schema-validator.js           # Global configuration for schema validations.
 │   │   └── ...
 │   ├── graphql.js                        # Global configuration to join the GraphQL modules.
