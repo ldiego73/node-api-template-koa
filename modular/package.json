@@ -13,6 +13,7 @@
     "lint:test": "eslint test -f stylish",
     "lint:report": "eslint src -f html -o reports/lint.html",
     "format": "prettier --write src/**/*.js",
+    "format:fix": "eslint src --fix",
     "predevelop": "npm run clean && npm run lint:code",
     "develop": "nodemon ./src/server.js",
     "pretest": "npm run clean && npm run lint:report",

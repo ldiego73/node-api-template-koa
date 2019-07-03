@@ -2,7 +2,7 @@ const toResponse = (status, params) => {
   const { title, detail, instance } = params
 
   return {
-    type: `about:blank`,
+    type: 'about:blank',
     title,
     status,
     detail,
@@ -14,8 +14,8 @@ export default class {
   static notFound(ctx) {
     ctx.status = 404
     ctx.body = toResponse(ctx.status, {
-      title: `Not Found`,
-      detail: ``,
+      title: 'Not Found',
+      detail: '',
       instance: ctx.url,
     })
     return ctx.body

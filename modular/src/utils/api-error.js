@@ -1,4 +1,4 @@
-import ResponseError from "./response-error"
+import ResponseError from './response-error'
 
 export default async (ctx, next) => {
   try {
