@@ -1,7 +1,7 @@
 /* eslint require-atomic-updates: 0 */
 
-import { BaseContext } from "koa"
-import PokemonService from "../services/pokemon.service"
+import { BaseContext } from 'koa'
+import PokemonService from '../services/pokemon.service'
 
 const service = new PokemonService()
 

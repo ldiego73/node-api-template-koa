@@ -1,4 +1,4 @@
-import { BaseContext } from "koa"
+import { BaseContext } from 'koa'
 
 export default async (ctx: BaseContext, next: () => Promise<any>) => {
   if (ctx.request.url === `/favicon.ico`) {

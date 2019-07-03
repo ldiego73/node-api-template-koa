@@ -23,7 +23,7 @@ export default class {
     })
 
     client.on('error', err => {
-      log.error('Redis error: ${err}')
+      log.error(`Redis error: ${err}`)
     })
 
     return client

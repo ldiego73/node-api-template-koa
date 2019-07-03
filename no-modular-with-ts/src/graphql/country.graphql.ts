@@ -1,14 +1,14 @@
-import fs from "fs"
-import path from "path"
-import { GraphQLModule } from "@graphql-modules/core"
-import { gql } from "apollo-server-koa"
+import fs from 'fs'
+import path from 'path'
+import { GraphQLModule } from '@graphql-modules/core'
+import { gql } from 'apollo-server-koa'
 
-import queries from "./queries/country.queries"
-import mutations from "./mutations/country.mutations"
+import queries from './queries/country.queries'
+import mutations from './mutations/country.mutations'
 
 const graphql = fs.readFileSync(
-  path.join(__dirname, `./gql/country.gql`),
-  `utf8`
+  path.join(__dirname, './gql/country.gql'),
+  'utf8'
 )
 
 export default new GraphQLModule({

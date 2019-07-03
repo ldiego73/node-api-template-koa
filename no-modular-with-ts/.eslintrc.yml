@@ -33,7 +33,10 @@ rules:
   complexity: [0, 4]
   eqeqeq: 2
   filenames/match-regex: [2, "^[a-z-\\d\\.]+$", true]
-  quotes: [2, backtick]
+  quotes:
+    - 2
+    - single
+    - allowTemplateLiterals: true
   no-console: 1
   no-dupe-keys: 2
   no-else-return: 2

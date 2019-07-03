@@ -1,4 +1,4 @@
-import PokemonService from "../../services/pokemon.service"
+import PokemonService from '../../services/pokemon.service'
 
 const pokemonService = new PokemonService()
 

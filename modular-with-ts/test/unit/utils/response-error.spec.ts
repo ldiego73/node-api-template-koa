@@ -1,7 +1,7 @@
 import createError from 'http-errors'
 import ResponseError from '../../../src/utils/response-error'
 
-describe(`utils/response`, () => {
+describe('utils/response', () => {
   const ctx = {
     status: 404,
     url: '/api/not-found',
