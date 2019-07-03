@@ -1,12 +1,12 @@
-import Service from './service'
+import Service from '../service'
 
 const service = new Service()
 
 export default {
-  async countries(_: any, { orderBy }: any) {
+  async countries(_, { orderBy }) {
     return await service.findAll(orderBy)
   },
-  async country(_: any, { iso }: any) {
+  async country(_, { iso }) {
     return await service.findByIso(iso)
   },
 }

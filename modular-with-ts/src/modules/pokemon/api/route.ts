@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 
 import Controller from './controller'
-import schemaValidator from '../../utils/schema-validator'
+import schemaValidator from '../../../utils/schema-validator'
 import schema from './schema'
 
 const controller = new Controller()
