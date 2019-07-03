@@ -1,4 +1,4 @@
-import country from './modules/country/api/route'
-import pokemon from './modules/pokemon/api/route'
+import country from './modules/country/api'
+import pokemon from './modules/pokemon/api'
 
 export default [country, pokemon]

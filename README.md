@@ -66,16 +66,17 @@ This project is structured by modules or features
 │   │   ├── api
 │   ├── modules                           # Folder that specifies the features the business.
 │   │   ├── name                          # Folder that contains one feature the business.
+│   │   │   ├── api                       # Folder that contains the API configuration.
+│   │   │   │   ├── controller.js         # Validate the request and send to data to service.
+│   │   │   │   ├── index.js              # Contains the verbs of an endpoint the REST API.
+│   │   │   │   └── schema.js             # Specifies the validations of attributes of a model.
 │   │   │   ├── graphql                   # Folder that contains the GraphQL configuration.
 │   │   │   │   ├── schema.gql            # File that contains the types of GraphQL.
 │   │   │   │   ├── index.js              # Create one GraphQL module configuration.
 │   │   │   │   ├── mutations.js          # Specifies the methods to make transactions.
 │   │   │   │   └── queries.js            # Specifies the methods to make queries.
-│   │   │   ├── controller.js             # Validate the request and send to data to service.
 │   │   │   ├── model.js                  # Specified the model of business logic.
 │   │   │   ├── repository.js             # Contains the methods to connect and provides the information the database.
-│   │   │   ├── route.js                  # Contains the verbs of an endpoint the REST API.
-│   │   │   ├── schema.js                 # Specifies the validations of attributes of a model.
 │   │   │   └── service.js                # Inside this file your can do business rules.
 │   ├── utils                             # Folder that especies the utils of project.
 │   │   ├── api-docs.js                   # Handles the docs the api.
