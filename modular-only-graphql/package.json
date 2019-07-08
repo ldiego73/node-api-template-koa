@@ -24,7 +24,7 @@
     "test:coverage:unit": "npm run test:unit -- --coverage",
     "test:coverage:integration": "npm run test:integration -- --coverage",
     "prebuild": "npm run clean && npm run lint:report",
-    "build": "babel src --presets minify --out-dir dist --copy-files && cp env.yaml ./dist",
+    "build": "babel src --out-dir dist --copy-files && cp env.yaml ./dist",
     "serve": "cross-env NODE_ENV=production node ./dist/bin/api"
   },
   "bin": {
