@@ -1,3 +1,5 @@
+/* eslint require-atomic-updates: 0 */
+
 import PokemonService from '../services/pokemon.service'
 
 const service = new PokemonService()

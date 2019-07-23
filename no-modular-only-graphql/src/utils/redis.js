@@ -8,11 +8,11 @@ export default class {
   }
 
   connect({ host, port, timeToRetry, retries }) {
-    let client = new IORedis({
+    const client = new IORedis({
       host: host,
       port: port,
       retryStrategy(times) {
-        var delay = Math.min(times * timeToRetry, 2000)
+        const delay = Math.min(times * timeToRetry, 2000)
         return delay
       },
       maxRetriesPerRequest: retries,

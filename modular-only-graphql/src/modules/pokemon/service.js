@@ -3,11 +3,13 @@ import axios from 'axios'
 export default class {
   async search(id) {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    // eslint-disable-next-line camelcase
     const { name, base_experience, height, weight, sprites } = data
     const pokemon = {}
 
     pokemon.id = id
     pokemon.name = name
+    // eslint-disable-next-line camelcase
     pokemon.base_experience = base_experience
     pokemon.height = height
     pokemon.weight = weight

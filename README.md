@@ -112,6 +112,14 @@ This project is structured by modules or features
 └── README.md                             # Specified the description the Project.
 ```
 
+## Update dependencies
+
+Execute the next line:
+
+```
+./update.sh
+```
+
 ## Enabled Port in Ubuntu
 
 ```

@@ -1,6 +1,8 @@
+/* eslint require-atomic-updates: 0 */
+
 import CountryService from '../services/country.service'
 
-let service = new CountryService()
+const service = new CountryService()
 
 export default class {
   async list(ctx) {

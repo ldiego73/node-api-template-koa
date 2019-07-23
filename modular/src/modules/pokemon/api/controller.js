@@ -1,3 +1,5 @@
+/* eslint require-atomic-updates: 0 */
+
 import Service from '../service'
 
 const service = new Service()

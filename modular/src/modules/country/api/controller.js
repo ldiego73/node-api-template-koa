@@ -1,6 +1,8 @@
+/* eslint require-atomic-updates: 0 */
+
 import Service from '../service'
 
-let service = new Service()
+const service = new Service()
 
 export default class {
   async list(ctx) {
