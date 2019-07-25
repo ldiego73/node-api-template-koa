@@ -9,11 +9,20 @@ interface Params {
   retries: number
 }
 
-export default class {
+export default class Client{
+  private static instance: Client
   private client: Redis
 
-  constructor({ host, port, timeToRetry, retries }: Params) {
+  private constructor({ host, port, timeToRetry, retries }: Params) {
     this.client = this.connect({ host, port, timeToRetry, retries })
+  }
+
+  static getInstance({ host, port, timeToRetry, retries }: Params): Client {
+    if (!Client.instance) {
+      Client.instance = new Client({ host, port, timeToRetry, retries })
+    }
+
+    return Client.instance
   }
 
   connect({ host, port, timeToRetry, retries }: Params) {

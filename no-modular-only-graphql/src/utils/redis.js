@@ -2,7 +2,7 @@
 import IORedis from 'ioredis'
 import log from 'fancy-log'
 
-export default class {
+class Redis {
   constructor({ host, port, timeToRetry, retries }) {
     this.client = this.connect({ host, port, timeToRetry, retries })
   }
@@ -40,5 +40,18 @@ export default class {
   async set(key, value, expire) {
     await this.client.set(key, value)
     if (expire) await this.client.expire(key, expire)
+  }
+}
+
+export default class {
+  constructor() {
+    if (!Singleton.instance) {
+      log.info('Single instance Redis')
+      Singleton.instance = new Redis()
+    }
+  }
+
+  getInstance() {
+    return Singleton.instance
   }
 }
