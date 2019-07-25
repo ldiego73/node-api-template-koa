@@ -43,7 +43,7 @@ class Redis {
   }
 }
 
-export default class {
+export default class Singleton{
   constructor() {
     if (!Singleton.instance) {
       log.info('Single instance Redis')
