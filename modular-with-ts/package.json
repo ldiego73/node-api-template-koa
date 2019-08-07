@@ -27,7 +27,7 @@
     "build": "tsc && gulp compress && gulp copy",
     "serve": "cross-env NODE_ENV=production node ./dist/bin/api"
   },
-  "repository": "https://github.com/ldiego73/node-api-template",
+  "repository": "https://github.com/ldiego73/node-api-template-koa",
   "author": "Luis Diego",
   "license": "MIT",
   "dependencies": {
