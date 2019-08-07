@@ -126,3 +126,11 @@ Execute the next line:
 sudo apt-get install libcap2-bin
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 ```
+
+## Windows
+
+Windows users to run the next command:
+
+```
+git config --global core.autocrlf false
+```
