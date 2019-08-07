@@ -2,7 +2,7 @@
 import IORedis from 'ioredis'
 import log from 'fancy-log'
 
-class Redis{
+class Redis {
   constructor({ host, port, timeToRetry, retries }) {
     this.client = this.connect({ host, port, timeToRetry, retries })
   }
@@ -43,7 +43,7 @@ class Redis{
   }
 }
 
-export default class Singleton{
+export default class Singleton {
   constructor() {
     if (!Singleton.instance) {
       log.info('Single instance Redis')

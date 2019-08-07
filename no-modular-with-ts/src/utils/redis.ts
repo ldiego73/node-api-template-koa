@@ -9,7 +9,7 @@ interface Params {
   retries: number
 }
 
-export default class Client{
+export default class Client {
   private static instance: Client
   private client: Redis
 
