@@ -1,6 +1,13 @@
 import { BaseContext } from 'koa'
 import joi from '@hapi/joi'
 
+interface ValidateOptions {
+  headers?: object
+  params?: object
+  query?: object
+  body?: object
+}
+
 const validateObject = (
   object: object,
   label: string,
@@ -15,7 +22,10 @@ const validateObject = (
   }
 }
 
-const validate = (obj: any) => (ctx: BaseContext, next: () => Promise<any>) => {
+const validate = (obj: ValidateOptions) => (
+  ctx: BaseContext,
+  next: () => Promise<any>
+) => {
   try {
     validateObject(ctx.headers, 'Headers', obj.headers, {
       allowUnknown: true,

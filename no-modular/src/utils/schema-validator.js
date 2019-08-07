@@ -9,16 +9,16 @@ const validateObject = (object, label, schema, options) => {
   }
 }
 
-const validate = obj => (ctx, next) => {
+const validate = ({ headers, params, query, body }) => (ctx, next) => {
   try {
-    validateObject(ctx.headers, 'Headers', obj.headers, {
+    validateObject(ctx.headers, 'Headers', headers, {
       allowUnknown: true,
     })
-    validateObject(ctx.params, 'URL Parameters', obj.params)
-    validateObject(ctx.query, 'URL Query', obj.query)
+    validateObject(ctx.params, 'URL Parameters', params)
+    validateObject(ctx.query, 'URL Query', query)
 
     if (ctx.request.body) {
-      validateObject(ctx.request.body, 'Request Body', obj.body)
+      validateObject(ctx.request.body, 'Request Body', body)
     }
 
     return next()
