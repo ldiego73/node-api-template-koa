@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import helmet from 'koa-helmet'
+import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
 import { ApolloServer } from 'apollo-server-koa'
 import log from 'fancy-log'
@@ -27,6 +28,7 @@ server
   .use(accessLogger)
   .use(errorLogger)
   .use(helmet.contentSecurityPolicy(csp))
+  .use(cors())
   .use(compress)
   .use(bodyParser())
   .use(notFavicon)
