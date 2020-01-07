@@ -34,8 +34,7 @@ server
   .use(notFavicon)
   .use(apiError)
   .use(docs)
-
-serverGraphql.applyMiddleware({ app: server })
+  .use(serverGraphql.getMiddleware())
 
 /* istanbul ignore if  */
 if (env.NODE_ENV !== 'test') {

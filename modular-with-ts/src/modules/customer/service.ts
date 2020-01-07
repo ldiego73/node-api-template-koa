@@ -18,7 +18,10 @@ export default class {
     return await repository.findOrdersByCustomer(customerId)
   }
 
-  async findOrderByCustomer(customerId: number, orderId: number): Promise<Order> {
+  async findOrderByCustomer(
+    customerId: number,
+    orderId: number
+  ): Promise<Order> {
     return await repository.findOrderByCustomer(customerId, orderId)
   }
 

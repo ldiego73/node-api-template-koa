@@ -1,16 +1,16 @@
 /* eslint require-atomic-updates: 0 */
 
-import { BaseContext } from 'koa'
+import { RouterContext } from 'koa-router'
 import Service from '../service'
 
 const service = new Service()
 
 export default class {
-  async list(ctx: BaseContext): Promise<any> {
+  async list(ctx: RouterContext): Promise<any> {
     ctx.body = await service.findAll()
   }
 
-  async findByIso(ctx: BaseContext): Promise<any> {
+  async findByIso(ctx: RouterContext): Promise<any> {
     const iso = ctx.params.iso
     const result = await service.findByIso(iso)
 

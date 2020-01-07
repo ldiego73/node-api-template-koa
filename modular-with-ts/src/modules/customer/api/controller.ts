@@ -1,16 +1,16 @@
 /* eslint require-atomic-updates: 0 */
 
-import { Context } from 'koa'
 import Service from '../service'
+import { RouterContext } from 'koa-router'
 
 const service = new Service()
 
 export default class {
-  async getCustomers(ctx: Context) {
+  async getCustomers(ctx: RouterContext): Promise<any> {
     ctx.body = await service.findCustomersAll()
   }
 
-  async getCustomerById(ctx: Context) {
+  async getCustomerById(ctx: RouterContext): Promise<any> {
     const id = parseInt(ctx.params.id)
     const result = await service.findCustomerById(id)
 
@@ -21,7 +21,7 @@ export default class {
     }
   }
 
-  async getOrders(ctx: Context) {
+  async getOrders(ctx: RouterContext): Promise<any> {
     const id = parseInt(ctx.params.id)
     const result = await service.findOrdersByCustomer(id)
 
@@ -32,7 +32,7 @@ export default class {
     }
   }
 
-  async getOrderById(ctx: Context) {
+  async getOrderById(ctx: RouterContext): Promise<any> {
     const id = parseInt(ctx.params.id)
     const orderId = parseInt(ctx.params.orderId)
 
@@ -45,7 +45,7 @@ export default class {
     }
   }
 
-  async getProducts(ctx: Context) {
+  async getProducts(ctx: RouterContext): Promise<any> {
     const id = parseInt(ctx.params.id)
     const orderId = parseInt(ctx.params.orderId)
 

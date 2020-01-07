@@ -23,9 +23,14 @@ export default class {
     })
   }
 
-  async findOrderByCustomer(customerId: number, orderId: number): Promise<Order> {
+  async findOrderByCustomer(
+    customerId: number,
+    orderId: number
+  ): Promise<Order> {
     return new Promise(resolve => {
-      resolve(orders.find(o => o.customer_id === customerId && o.id === orderId))
+      resolve(
+        orders.find(o => o.customer_id === customerId && o.id === orderId)
+      )
     })
   }
 

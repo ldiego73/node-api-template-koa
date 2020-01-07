@@ -1,5 +1,5 @@
-import { BaseContext } from 'koa'
-import joi from '@hapi/joi'
+import { RouterContext } from 'koa-router'
+import Joi from '@hapi/joi'
 
 interface ValidateOptions {
   headers?: object
@@ -11,19 +11,21 @@ interface ValidateOptions {
 const validateObject = (
   object: object,
   label: string,
-  schema: object,
+  params: object,
   options?: any
 ) => {
-  if (!schema) return
+  if (!params) return
 
-  const { error } = joi.validate(object, schema, options)
+  const schema = Joi.object(params)
+
+  const { error } = schema.validate(object, options)
   if (error) {
     throw new Error(`Invalid ${label} - ${error.message}`)
   }
 }
 
 const validate = (obj: ValidateOptions) => (
-  ctx: BaseContext,
+  ctx: RouterContext,
   next: () => Promise<any>
 ) => {
   try {

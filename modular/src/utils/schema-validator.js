@@ -1,9 +1,11 @@
-import joi from '@hapi/joi'
+import Joi from '@hapi/joi'
 
-const validateObject = (object, label, schema, options) => {
-  if (!schema) return
+const validateObject = (object, label, params, options) => {
+  if (!params) return
 
-  const { error } = joi.validate(object, schema, options)
+  const schema = Joi.object(params)
+
+  const { error } = schema.validate(object, options)
   if (error) {
     throw new Error(`Invalid ${label} - ${error.message}`)
   }

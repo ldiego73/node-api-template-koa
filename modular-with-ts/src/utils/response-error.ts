@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa'
+import { Context } from 'koa'
 import { HttpError } from 'http-errors'
 
 interface Params {
@@ -29,7 +29,7 @@ const toResponse = (status: number, params?: Params) => {
 }
 
 export default class {
-  static notFound(ctx: BaseContext) {
+  static notFound(ctx: Context) {
     ctx.status = 404
     ctx.body = toResponse(ctx.status, {
       title: 'Not Found',
@@ -39,7 +39,7 @@ export default class {
     return ctx.body
   }
 
-  static internalServerError(ctx: BaseContext, err: HttpError & Error) {
+  static internalServerError(ctx: Context, err: HttpError & Error) {
     ctx.status = err.statusCode || err.status || 500
     ctx.body = toResponse(ctx.status, {
       title: err.message,

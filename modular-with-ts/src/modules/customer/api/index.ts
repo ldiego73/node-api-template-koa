@@ -12,7 +12,12 @@ const validatorOrderId = schemaValidator({ params: schemaOrderId })
 router.get('customers/all', '/', controller.getCustomers)
 router.get('customers/id', '/:id', validatorId, controller.getCustomerById)
 router.get('customers/orders', '/:id/orders', validatorId, controller.getOrders)
-router.get('customers/order', '/:id/orders/:orderId', validatorOrderId, controller.getOrderById)
+router.get(
+  'customers/order',
+  '/:id/orders/:orderId',
+  validatorOrderId,
+  controller.getOrderById
+)
 router.get(
   'customers/orders/products',
   '/:id/orders/:orderId/products',
