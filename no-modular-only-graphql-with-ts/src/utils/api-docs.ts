@@ -7,6 +7,7 @@ const load = swagger.loadDocumentSync(file)
 const document = swagger.validateDocument(load)
 
 if (!document) {
+  /* istanbul ignore next */
   throw Error(`./swagger.yml does not conform to the Swagger 2.0 schema`)
 }
 

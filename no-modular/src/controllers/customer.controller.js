@@ -16,7 +16,7 @@ export default class {
     if (result) {
       ctx.body = result
     } else {
-      ctx.throw(400, `Customer ${id} not found`)
+      ctx.throw(404, `Customer ${id} not found`)
     }
   }
 
@@ -24,10 +24,10 @@ export default class {
     const id = parseInt(ctx.params.id)
     const result = await service.findOrdersByCustomer(id)
 
-    if (result) {
+    if (result && result.length > 0) {
       ctx.body = result
     } else {
-      ctx.throw(400, `Orders by Customer ${id} not found`)
+      ctx.throw(404, `Orders by Customer ${id} not found`)
     }
   }
 
@@ -40,7 +40,7 @@ export default class {
     if (order) {
       ctx.body = order
     } else {
-      ctx.throw(400, `Order ${orderId} by Customer ${id} not found`)
+      ctx.throw(404, `Order ${orderId} by Customer ${id} not found`)
     }
   }
 
@@ -53,13 +53,13 @@ export default class {
     if (order) {
       const products = await service.findProducstByOrder(order.id)
 
-      if (products) {
+      if (products && products.length > 0) {
         ctx.body = products
       } else {
-        ctx.throw(400, `Products by Order ${id} not found`)
+        ctx.throw(404, `Products by Order ${orderId} not found`)
       }
     } else {
-      ctx.throw(400, `Order ${orderId} by Customer ${id} not found`)
+      ctx.throw(404, `Order ${orderId} by Customer ${id} not found`)
     }
   }
 }
