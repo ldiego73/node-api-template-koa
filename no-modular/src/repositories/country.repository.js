@@ -1,4 +1,4 @@
-import data from './data.json'
+import data from '../data/countries.json'
 
 export default class {
   async findAll() {
