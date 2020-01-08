@@ -1,7 +1,7 @@
-import { BaseContext } from 'koa'
+import { Context } from 'koa'
 import ResponseError from './response-error'
 
-export default async (ctx: BaseContext, next: () => Promise<any>) => {
+export default async (ctx: Context, next: () => Promise<any>) => {
   try {
     await next()
     if (!ctx.body && (!ctx.status || ctx.status === 404)) {
