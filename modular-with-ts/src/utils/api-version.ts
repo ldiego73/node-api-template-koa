@@ -1,15 +1,33 @@
-const defaultOptions = {
+import { RouterContext } from 'koa-router'
+
+interface Options {
+  requestHeader?: string
+  responseHeader?: string
+  fallbackLatest?: boolean
+  defaultVersion?: string
+}
+
+interface Version {
+  version: string
+  method: any
+}
+
+const defaultOptions: Options = {
   requestHeader: 'x-api-version',
   responseHeader: 'x-api-version',
   fallbackLatest: false,
   defaultVersion: null,
 }
 
-const clear = version => version.replace(/\./gi, '')
-const cast = version => parseInt(version)
-const clearAndCast = version => cast(clear(version))
+const clear = (version: string) => version.replace(/\./gi, '')
+const cast = (version: string) => parseInt(version)
+const clearAndCast = (version: string) => cast(clear(version))
 
-const findMethod = (requestVersion, tuples, fallbackLatest = false) => {
+const findMethod = (
+  requestVersion: string,
+  tuples: Array<Version>,
+  fallbackLatest = false
+): Version => {
   if (requestVersion === null || requestVersion === '*') {
     return tuples[0]
   }
@@ -29,9 +47,12 @@ const findMethod = (requestVersion, tuples, fallbackLatest = false) => {
   return null
 }
 
-const versions = (versions, options = {}) => (ctx, next) => {
-  const config = Object.assign({}, defaultOptions, options)
-  const tuples = []
+const versions = (versions: any, options: Options) => (
+  ctx: RouterContext,
+  next: () => Promise<any>
+) => {
+  const config: Options = Object.assign({}, defaultOptions, options)
+  const tuples: Array<Version> = []
 
   /* istanbul ignore if */
   if (config.fallbackLatest && config.defaultVersion) {

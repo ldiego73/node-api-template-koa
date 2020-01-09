@@ -1,5 +1,5 @@
-import countriesV1 from '../../data/v1/countries.json'
-import countriesV2 from '../../data/v2/countries.json'
+import countriesV1 from './data/v1/countries.json'
+import countriesV2 from './data/v2/countries.json'
 
 export default class {
   async findAll() {

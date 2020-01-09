@@ -6,8 +6,8 @@ const file = path.join(__dirname, 'docs.yml')
 const load = swagger.loadDocumentSync(file)
 const document = swagger.validateDocument(load)
 
+/* istanbul ignore if */
 if (!document) {
-  /* istanbul ignore next */
   throw Error(`./swagger.yml does not conform to the Swagger 2.0 schema`)
 }
 

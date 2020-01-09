@@ -238,4 +238,38 @@ describe('GET /country', () => {
     },
     TIMEOUT
   )
+
+  it(
+    'Should return version not supported by api the countries',
+    async () => {
+      const url = '/country/default'
+      const version =  '5.0.0'
+      const res = await request
+        .get(url)
+        .set('x-api-version', version)
+        .expect('Content-Type', /json/)
+        .expect(400)
+
+        const data = res.body
+
+        expect(Object.keys(data)).toEqual(
+          expect.arrayContaining([
+            'type',
+            'title',
+            'status',
+            'detail',
+            'instance',
+          ])
+        )
+
+        const { type, title, status, detail, instance } = data
+
+        expect(type).toBe('about:blank')
+        expect(title).toBe(`Version ${version} is not supported`)
+        expect(status).toBe(res.status)
+        expect(detail).toEqual(expect.stringContaining('BadRequestError'))
+        expect(instance).toBe(url)
+    },
+    TIMEOUT
+  )
 })

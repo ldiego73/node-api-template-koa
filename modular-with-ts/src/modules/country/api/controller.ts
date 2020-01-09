@@ -10,6 +10,10 @@ export default class {
     ctx.body = await service.findAll()
   }
 
+  async listV2(ctx: RouterContext): Promise<any> {
+    ctx.body = await service.findAllV2()
+  }
+
   async findByIso(ctx: RouterContext): Promise<any> {
     const iso = ctx.params.iso
     const result = await service.findByIso(iso)

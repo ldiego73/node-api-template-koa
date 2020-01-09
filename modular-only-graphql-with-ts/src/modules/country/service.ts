@@ -15,43 +15,19 @@ export default class {
 
     if (orderBy === 'iso_DESC') {
       sortData = data.sort((a, b) => {
-        if (a.iso > b.iso) {
-          return -1
-        } else if (a.iso < b.iso) {
-          return 1
-        }
-        /* istanbul ignore next */
-        return 0
+        return a.iso < b.iso ? 1 : -1
       })
     } else if (orderBy === 'iso_ASC') {
       sortData = data.sort((a, b) => {
-        if (a.iso < b.iso) {
-          return -1
-        } else if (a.iso > b.iso) {
-          return 1
-        }
-        /* istanbul ignore next */
-        return 0
+        return a.iso > b.iso ? 1 : -1
       })
     } else if (orderBy === 'name_DESC') {
       sortData = data.sort((a, b) => {
-        if (a.name > b.name) {
-          return -1
-        } else if (a.name < b.name) {
-          return 1
-        }
-        /* istanbul ignore next */
-        return 0
+        return a.name < b.name ? 1 : -1
       })
     } else if (orderBy === 'name_ASC') {
       sortData = data.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1
-        } else if (a.name > b.name) {
-          return 1
-        }
-        /* istanbul ignore next */
-        return 0
+        return a.name > b.name ? 1 : -1
       })
     } else {
       /* istanbul ignore next */

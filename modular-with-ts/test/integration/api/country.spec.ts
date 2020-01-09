@@ -128,4 +128,148 @@ describe('GET /country', () => {
     },
     TIMEOUT
   )
+
+  it(
+    'Should return a list of countries version 2.0.0',
+    async () => {
+      const url = '/country/all'
+      const res = await request
+        .get(url)
+        .set('x-api-version', '2.0.0')
+        .expect('Content-Type', /json/)
+        .expect('x-api-version', '2.0.0')
+        .expect(200)
+
+      const data = res.body
+
+      expect(Array.isArray(data)).toBe(true)
+      expect(Object.keys(data[0])).toEqual(
+        expect.arrayContaining([
+          'name',
+          'iso',
+          'brand_id',
+          'currency',
+          'dial_code',
+          'status',
+        ])
+      )
+    },
+    TIMEOUT
+  )
+
+  it(
+    'Should return a list of countries version 2.0.0 without passing the version',
+    async () => {
+      const url = '/country/all'
+      const res = await request
+        .get(url)
+        .expect('Content-Type', /json/)
+        .expect('x-api-version', '2.0.0')
+        .expect(200)
+
+      const data = res.body
+
+      expect(Array.isArray(data)).toBe(true)
+      expect(Object.keys(data[0])).toEqual(
+        expect.arrayContaining([
+          'name',
+          'iso',
+          'brand_id',
+          'currency',
+          'dial_code',
+          'status',
+        ])
+      )
+    },
+    TIMEOUT
+  )
+
+  it(
+    'Should return a list of countries with fallback latest version',
+    async () => {
+      const url = '/country/all'
+      const res = await request
+        .get(url)
+        .set('x-api-version', '3.0.0')
+        .expect('Content-Type', /json/)
+        .expect('x-api-version', '2.0.0')
+        .expect(200)
+
+      const data = res.body
+
+      expect(Array.isArray(data)).toBe(true)
+      expect(Object.keys(data[0])).toEqual(
+        expect.arrayContaining([
+          'name',
+          'iso',
+          'brand_id',
+          'currency',
+          'dial_code',
+          'status',
+        ])
+      )
+    },
+    TIMEOUT
+  )
+
+  it(
+    'Should return a list of countries with default version',
+    async () => {
+      const url = '/country/default'
+      const res = await request
+        .get(url)
+        .expect('Content-Type', /json/)
+        .expect('x-api-version', '2.0.0')
+        .expect(200)
+
+      const data = res.body
+
+      expect(Array.isArray(data)).toBe(true)
+      expect(Object.keys(data[0])).toEqual(
+        expect.arrayContaining([
+          'name',
+          'iso',
+          'brand_id',
+          'currency',
+          'dial_code',
+          'status',
+        ])
+      )
+    },
+    TIMEOUT
+  )
+
+  it(
+    'Should return version not supported by api the countries',
+    async () => {
+      const url = '/country/default'
+      const version =  '5.0.0'
+      const res = await request
+        .get(url)
+        .set('x-api-version', version)
+        .expect('Content-Type', /json/)
+        .expect(400)
+
+        const data = res.body
+
+        expect(Object.keys(data)).toEqual(
+          expect.arrayContaining([
+            'type',
+            'title',
+            'status',
+            'detail',
+            'instance',
+          ])
+        )
+
+        const { type, title, status, detail, instance } = data
+
+        expect(type).toBe('about:blank')
+        expect(title).toBe(`Version ${version} is not supported`)
+        expect(status).toBe(res.status)
+        expect(detail).toEqual(expect.stringContaining('BadRequestError'))
+        expect(instance).toBe(url)
+    },
+    TIMEOUT
+  )
 })
