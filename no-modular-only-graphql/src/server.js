@@ -16,6 +16,7 @@ import notFavicon from './utils/api-not-favicon'
 import apiError from './utils/api-error'
 import docs from './utils/api-docs'
 import AppGraphqlModule from './graphql'
+import Logger from './utils/logger'
 
 const env = yenv()
 const PORT = env.PORT
@@ -35,6 +36,10 @@ server
   .use(apiError)
   .use(docs)
   .use(serverGraphql.getMiddleware())
+
+if (env.NODE_ENV === 'production') {
+  Logger.enableProductionMode()
+}
 
 /* istanbul ignore if  */
 if (env.NODE_ENV !== 'test') {

@@ -17,6 +17,7 @@ import apiError from './utils/api-error'
 import docs from './utils/api-docs'
 import routes from './routes'
 import AppGraphqlModule from './graphql'
+import Logger from './utils/logger'
 
 const env = yenv()
 const PORT = env.PORT
@@ -41,6 +42,10 @@ routes.map(r => {
   server.use(r.routes())
   server.use(r.allowedMethods())
 })
+
+if (env.NODE_ENV === 'production') {
+  Logger.enableProductionMode()
+}
 
 /* istanbul ignore if  */
 if (env.NODE_ENV !== 'test') {
