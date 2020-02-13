@@ -87,6 +87,7 @@ This project is structured by modules or features
 │   │   ├── csp.js                        # Handles the security the api.
 │   │   ├── docs.yml                      # Specifies the documentation the apis in the project.
 │   │   ├── response-error.js             # Global configuration for response error (not found, internal error server).
+│   │   ├── logger.js                     # Handles the differents log in the application.
 │   │   ├── schema-validator.js           # Global configuration for schema validations.
 │   │   └── ...
 │   ├── graphql.js                        # Global configuration to join the GraphQL modules.
