@@ -32,7 +32,7 @@ const serverGraphql = new ApolloServer({
 })
 
 createTracing({
-  name: 'api-modular',
+  name: 'api-modular-v3',
   server: 'http://localhost:8200',
 })
 

@@ -17,7 +17,6 @@ export default new GraphQLModule({
     Mutation: { ...mutations },
   },
   context(session) {
-    console.log(session.response)
     return session
   },
 })

@@ -43,8 +43,6 @@ export const span = (name, type, parent) => {
 export const params = (trace, ctx) => {
   const { req, res } = ctx
 
-  console.log('dentro params', ctx)
-
   trace.setLabel('http_url', ctx.path || req.url)
   trace.setLabel('http_method', ctx.method || req.method)
   trace.setLabel('http_status_code', res.statusCode)
@@ -61,11 +59,14 @@ export const paramsAndEnd = (trace, ctx) => {
 
 export const middlewareTracing = async (ctx, next) => {
   const { req } = ctx
+  const apolloTracing = ctx.get('x-apollo-tracing')
 
-  if (apm.pathGraphQL && ctx.path === apm.pathGraphQL) {
+  if (apolloTracing) {
     await next()
     return
   }
+
+  console.log(ctx.request.body)
 
   const trace = transaction(
     `${ctx.method} ${ctx.path}`,
