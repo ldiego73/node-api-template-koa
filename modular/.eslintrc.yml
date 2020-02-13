@@ -10,6 +10,7 @@ parserOptions:
     es6: true
     classes: true
     modules: true
+    experimentalDecorators: true
 env:
   node: true
   es6: true

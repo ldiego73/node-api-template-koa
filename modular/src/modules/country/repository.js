@@ -1,22 +1,27 @@
+import { trace } from '../../tracing/decorators'
+import { TracingTypes } from '../../tracing/index'
 import countriesV1 from './data/v1/countries.json'
 import countriesV2 from './data/v2/countries.json'
 
 export default class {
-  async findAll() {
+  @trace({ type: TracingTypes.repository })
+  async findAll(ctx) {
     return new Promise(resolve => resolve(countriesV1))
   }
 
-  async findAllV2() {
+  @trace({ type: TracingTypes.repository })
+  async findAllV2(ctx) {
     return new Promise(resolve => resolve(countriesV2))
   }
 
-  async findByIso(iso) {
+  @trace({ type: TracingTypes.repository })
+  async findByIso(ctx, iso) {
     return new Promise(resolve => {
       resolve(countriesV1.find(c => c.iso === iso))
     })
   }
 
-  async insert(entity) {
+  async insert(ctx, entity) {
     return true
   }
 }
