@@ -81,7 +81,7 @@ export const middleware = async (ctx, next) => {
 }
 
 export const middlewareGraphql = (ctx, label, next) => {
-  const { req } = ctx
+  const { req, res } = ctx
 
   const trace = transaction(
     `GRAPHQL /${label}`,
@@ -90,5 +90,4 @@ export const middlewareGraphql = (ctx, label, next) => {
   )
 
   req.trace = trace
-  ctx.set('apm-transaction-id', trace.id)
 }
