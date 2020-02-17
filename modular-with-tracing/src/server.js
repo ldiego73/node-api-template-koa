@@ -17,6 +17,7 @@ import apiError from './utils/api-error'
 import docs from './utils/api-docs'
 import routes from './routes'
 import AppGraphqlModule from './graphql'
+import * as tracing from './tracing'
 import Logger from './utils/logger'
 
 const env = yenv()
@@ -26,7 +27,13 @@ const { schema } = AppGraphqlModule
 const server = new Koa()
 const serverGraphql = new ApolloServer({
   schema,
+  context: ({ ctx }) => ctx,
   introspection: true,
+})
+
+tracing.create({
+  name: 'api-modular-v7',
+  server: 'http://localhost:8200',
 })
 
 server
@@ -37,6 +44,7 @@ server
   .use(compress)
   .use(bodyParser())
   .use(notFavicon)
+  .use(tracing.middleware)
   .use(apiError)
   .use(docs)
   .use(serverGraphql.getMiddleware())

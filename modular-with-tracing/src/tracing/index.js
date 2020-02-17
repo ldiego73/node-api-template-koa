@@ -1,6 +1,7 @@
 import apmServer from 'elastic-apm-node'
 
 let apm = null
+const params = new Map()
 
 export const TracingTypes = {}
 
@@ -10,7 +11,11 @@ TracingTypes[(TracingTypes['service'] = 2)] = 'service'
 TracingTypes[(TracingTypes['repository'] = 3)] = 'repository'
 TracingTypes[(TracingTypes['graphql'] = 4)] = 'graphql'
 
-export const createTracing = ({ name, server, pathGraphQL }) => {
+export const addParam = (key, value) => params.set(key, value)
+export const addParams = (...items) => items.map(i => addParam(i.key, i.value))
+export const clearParams = () => params.clear()
+
+export const create = ({ name, server, pathGraphQL }) => {
   if (!name) {
     throw Error('The name is a field required')
   }
@@ -40,7 +45,7 @@ export const span = (name, type, parent) => {
   return apm.startSpan(name, type)
 }
 
-export const params = (trace, ctx) => {
+export const createParams = (trace, ctx) => {
   const { req, res } = ctx
 
   trace.setLabel('http_url', ctx.path || req.url)
@@ -51,13 +56,7 @@ export const params = (trace, ctx) => {
   trace.result = res.statusCode >= 400 ? 'error' : 'success'
 }
 
-export const paramsAndEnd = (trace, ctx) => {
-  params(trace, ctx)
-
-  trace.end()
-}
-
-export const middlewareTracing = async (ctx, next) => {
+export const middleware = async (ctx, next) => {
   const { req } = ctx
   const apolloTracing = ctx.get('x-apollo-tracing')
 
@@ -66,18 +65,19 @@ export const middlewareTracing = async (ctx, next) => {
     return
   }
 
-  console.log(ctx.request.body)
-
   const trace = transaction(
     `${ctx.method} ${ctx.path}`,
     TracingTypes[TracingTypes.api]
   )
 
   req.trace = trace
+  ctx.set('apm-transaction-id', trace.id)
 
   await next()
 
-  paramsAndEnd(trace, ctx)
+  createParams(trace, ctx)
+
+  trace.end()
 }
 
 export const middlewareGraphql = (ctx, label, next) => {
@@ -85,8 +85,10 @@ export const middlewareGraphql = (ctx, label, next) => {
 
   const trace = transaction(
     `GRAPHQL /${label}`,
-    TracingTypes[TracingTypes.graphql]
+    TracingTypes[TracingTypes.graphql],
+    req.trace
   )
 
   req.trace = trace
+  ctx.set('apm-transaction-id', trace.id)
 }

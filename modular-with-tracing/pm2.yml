@@ -1,0 +1,7 @@
+apps:
+  name: api
+  script: ./dist/bin/api
+  env:
+    NODE_ENV: production
+  instances: max
+  exec_mode: cluster

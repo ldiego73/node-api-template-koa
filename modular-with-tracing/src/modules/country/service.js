@@ -1,11 +1,14 @@
+import { trace } from '../../tracing/decorators'
+import { TracingTypes } from '../../tracing/index'
 import Repository from './repository'
 import Model from './model'
 
 const repository = new Repository()
 
 export default class {
-  async findAll(orderBy) {
-    const data = await repository.findAll()
+  @trace({ type: TracingTypes.service })
+  async findAll(ctx, orderBy) {
+    const data = await repository.findAll(ctx)
 
     if (!orderBy) {
       return data
@@ -37,12 +40,14 @@ export default class {
     return sortData
   }
 
-  async findAllV2() {
-    return await repository.findAllV2()
+  @trace({ type: TracingTypes.service })
+  async findAllV2(ctx) {
+    return await repository.findAllV2(ctx)
   }
 
-  async findByIso(iso) {
-    const data = await repository.findByIso(iso)
+  @trace({ type: TracingTypes.service })
+  async findByIso(ctx, iso) {
+    const data = await repository.findByIso(ctx, iso)
     const keys = Object.keys(data || {}).length
 
     if (keys < 1) return null
@@ -56,7 +61,8 @@ export default class {
     )
   }
 
-  async insert() {
-    return await repository.insert()
+  @trace({ type: TracingTypes.service })
+  async insert(ctx, args) {
+    return await repository.insert(ctx, args)
   }
 }

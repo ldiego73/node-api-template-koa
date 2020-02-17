@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Perú",
+    "iso": "PE",
+    "brand_id": 2,
+    "currency": "S/.",
+    "dial_code": "+51",
+    "status": true
+  },
+  {
+    "name": "Colombia",
+    "iso": "CO",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+57",
+    "status": true
+  },
+  {
+    "name": "Chile",
+    "iso": "CL",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+56",
+    "status": true
+  },
+  {
+    "name": "Mexico",
+    "iso": "MX",
+    "brand_id": 1,
+    "currency": "$.",
+    "dial_code": "+52",
+    "status": true
+  },
+  {
+    "name": "Bolivia",
+    "iso": "BO",
+    "brand_id": 2,
+    "currency": "Bs",
+    "dial_code": "+591",
+    "status": true
+  },
+  {
+    "name": "Puerto Rico",
+    "iso": "PR",
+    "brand_id": 1,
+    "currency": "$",
+    "dial_code": "+1",
+    "status": true
+  },
+  {
+    "name": "Brasil",
+    "iso": "BR",
+    "brand_id": 2,
+    "currency": "R$",
+    "dial_code": "+55",
+    "status": false
+  },
+  {
+    "name": "Guatemala",
+    "iso": "GT",
+    "brand_id": 2,
+    "currency": "Q",
+    "dial_code": "+502",
+    "status": true
+  },
+  {
+    "name": "Panama",
+    "iso": "PA",
+    "brand_id": 1,
+    "currency": "B/.",
+    "dial_code": "+507",
+    "status": true
+  },
+  {
+    "name": "El Salvador",
+    "iso": "SV",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+503",
+    "status": true
+  },
+  {
+    "name": "Costa Rica",
+    "iso": "CR",
+    "brand_id": 1,
+    "currency": "₡",
+    "dial_code": "+506",
+    "status": true
+  },
+  {
+    "name": "Ecuador",
+    "iso": "EC",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+593",
+    "status": true
+  },
+  {
+    "name": "Republica Dominicana",
+    "iso": "DO",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+1",
+    "status": true
+  },
+  {
+    "name": "Estados Unidos",
+    "iso": "US",
+    "brand_id": 2,
+    "currency": "$",
+    "dial_code": "+1",
+    "status": false
+  }
+]

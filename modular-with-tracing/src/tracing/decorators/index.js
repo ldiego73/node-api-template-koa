@@ -1,10 +1,4 @@
-import {
-  TracingTypes,
-  transaction,
-  span,
-  middlewareGraphql,
-  paramsAndEnd,
-} from '../'
+import { TracingTypes, transaction, span, middlewareGraphql } from '../'
 
 const context = (type, args) => {
   let ctx = null
@@ -68,10 +62,10 @@ export function traceGraphQL(params) {
 
       if (result instanceof Promise) {
         result.finally(() => {
-          paramsAndEnd(trace, ctx)
+          trace.end()
         })
       } else {
-        paramsAndEnd(trace, ctx)
+        trace.end()
       }
 
       return result
